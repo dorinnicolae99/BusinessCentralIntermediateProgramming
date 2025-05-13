@@ -18,13 +18,13 @@ codeunit 50109 GetAIAnalysis
     begin
         JsonBody := '{ "documents": [ { "language": "en", "id": "1", "text": "' + ReviewText + '" } ] }';
 
-        RequestMessage.SetRequestUri('https://myailanguage078.cognitiveservices.azure.com/text/analytics/v3.1/sentiment');
+        RequestMessage.SetRequestUri('---your endpoint + text/analytics/v3.1/sentiment---');
         RequestMessage.Method := 'POST';
         RequestMessage.Content().WriteFrom(JsonBody);
         RequestMessage.Content().GetHeaders(HttpHeader);
         HttpHeader.Remove('Content-Type'); // Ensure it's not duplicated
         HttpHeader.Add('Content-Type', 'application/json');
-        HttpHeader.Add('Ocp-Apim-Subscription-Key', 'BSmQHfLjQnQ1QipH91FCfQCQmo67MOvVIYIvDb51WiAlgFMJES2JJQQJ99BEACgEuAYXJ3w3AAAaACOGXDuG');
+        HttpHeader.Add('Ocp-Apim-Subscription-Key', '--your key ---');
 
         if Client.Send(RequestMessage, ResponseMessage) then begin
             ResponseMessage.Content().ReadAs(JsonResponse);
