@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "alProjectInfo": {
+      "type": "stdio",
+      "command": "pwsh",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/tools/al-project-info-mcp.ps1"
+      ]
+    }
+  }
+}
