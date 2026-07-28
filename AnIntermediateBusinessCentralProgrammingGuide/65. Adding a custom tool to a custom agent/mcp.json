@@ -1,13 +1,15 @@
+
 {
   "servers": {
     "alProjectInfo": {
       "type": "stdio",
       "command": "pwsh",
+      "cwd": "${workspaceFolder}",
       "args": [
         "-NoLogo",
         "-NoProfile",
         "-File",
-        "${workspaceFolder}/tools/al-project-info-mcp.ps1"
+        "${workspaceFolder}/.github/tools/al-project-info-mcp.ps1"
       ]
     }
   }

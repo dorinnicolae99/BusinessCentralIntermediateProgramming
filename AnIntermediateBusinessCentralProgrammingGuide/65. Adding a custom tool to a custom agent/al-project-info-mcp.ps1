@@ -1,9 +1,30 @@
 $ErrorActionPreference = 'Stop'
 
-$workspaceRoot = $PSScriptRoot
-if (-not (Test-Path -LiteralPath (Join-Path $workspaceRoot 'app.json'))) {
-    $workspaceRoot = Split-Path -Parent $PSScriptRoot
+function Find-WorkspaceRoot {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$StartPath
+    )
+
+    $currentPath = $StartPath
+
+    while (-not [string]::IsNullOrWhiteSpace($currentPath)) {
+        if (Test-Path -LiteralPath (Join-Path $currentPath 'app.json')) {
+            return $currentPath
+        }
+
+        $parentPath = Split-Path -Parent $currentPath
+        if ($parentPath -eq $currentPath) {
+            break
+        }
+
+        $currentPath = $parentPath
+    }
+
+    return $StartPath
 }
+
+$workspaceRoot = Find-WorkspaceRoot -StartPath $PSScriptRoot
 $supportedProtocolVersion = '2025-06-18'
 
 function Write-McpMessage {
