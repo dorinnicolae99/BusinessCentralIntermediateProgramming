@@ -11,8 +11,6 @@ Use this workflow whenever the user asks to create or add a caption.
 2. Check that same element for a `ToolTip` property.
 3. If `ToolTip` is missing, add a concise tooltip that explains what the element does or what information it displays. Keep it next to the `Caption` and follow the surrounding AL style.
 4. If a `ToolTip` already exists, keep it unless the new caption makes it inaccurate; update it only when needed.
-5. Build the project so the generated `.g.xlf` template is updated.
-6. Ensure the matching runtime XLIFF exists in `Translations/` before reporting the task complete.
-7. Report both the caption and tooltip outcome, along with the build/translation status.
+5. Report both the caption and tooltip outcome
 
 Do not treat a caption-only source change as complete when the owning element has no tooltip.
